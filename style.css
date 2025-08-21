@@ -1,0 +1,160 @@
+/* style.css */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.font-chalk {
+    font-family: 'Chalkduster', 'Chalkboard', sans-serif;
+}
+/* шрифт мела только для h1,h2 через утилиту */
+h1.font-chalk, h2.font-chalk, h3.font-chalk {
+    letter-spacing: 0.5px;
+}
+body.dark {
+    background: linear-gradient(to right, #1f2937, #374151);
+}
+body.dark .bg-white {
+    background: #374151;
+    color: #e5e7eb;
+}
+body.dark .bg-gray-100 {
+    background: #4b5563;
+    border-color: #6b7280;
+}
+body.dark .text-gray-900 {
+    color: #e5e7eb;
+}
+body.dark .text-gray-600 {
+    color: #9ca3af;
+}
+body.dark .text-gray-700 {
+    color: #d1d5db;
+}
+body.dark .text-gray-500 {
+    color: #9ca3af;
+}
+body.dark .text-red-600 {
+    color: #f87171;
+}
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.nav-item.active {
+    background-color: #dbeafe;
+    color: #1e40af;
+    font-weight: bold;
+}
+button, .nav-item {
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+button:hover, .nav-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+input, select {
+    transition: all 0.2s;
+}
+input:focus, select:focus {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    border-color: #1e40af;
+}
+input.border-red-500 {
+    border-color: #ef4444;
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* по умолчанию скрыт, чтобы не перехватывать клики */
+    display: none;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.modal-overlay:not(.hidden) {
+    /* включаем только когда hidden снят */
+    display: flex;
+    pointer-events: auto;
+    opacity: 1;
+}
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s;
+    max-width: 90vw;
+}
+body.dark .modal-content {
+    background: #374151;
+    color: #e5e7eb;
+}
+.modal-overlay:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+.login-container {
+    animation: fadeIn 0.5s;
+    position: relative;
+}
+#chat-messages > div,
+#pm-messages > div,
+#friends-list > li,
+#announcements-list > li {
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    margin-bottom: 1rem;
+}
+#chat-messages > div:hover,
+#pm-messages > div:hover,
+#friends-list > li:hover,
+#announcements-list > li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 768px) {
+    .grid-cols-1.md\:grid-cols-\[250px_1fr\] {
+        grid-template-columns: 1fr;
+    }
+    aside {
+        margin-bottom: 1rem;
+    }
+    .login-container {
+        padding: 1rem;
+        max-width: 90%;
+    }
+    .nav-item {
+        font-size: 1rem;
+    }
+    #chat-messages > div,
+    #pm-messages > div {
+        max-width: 90%;
+    }
+}
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    button {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+    input, select {
+        font-size: 0.9rem;
+    }
+}
